@@ -25,6 +25,16 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
+typedef struct s_vars
+{
+	int	range;
+	int	mid;
+	int	offset;
+	int	start;
+	int	end;
+	int	size;
+}		t_vars;
+
 t_stack				*ft_new_node(int value);
 void				ft_push_node(t_stack **stack_x, t_stack *node);
 t_stack				*ft_last(t_stack *stack_x);

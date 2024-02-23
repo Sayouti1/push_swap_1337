@@ -56,6 +56,7 @@ int	main(int ac, char **av)
 		return (ft_free_stack_print_error(&a));
 	if (ft_is_duplicated(a))
 		return (ft_free_stack_print_error(&a));
-	ft_sort_algo(&a, &b);
+	//ft_sort_algo(&a, &b);
+	ft_new_algo(&a, &b);
 	return (0);
 }
