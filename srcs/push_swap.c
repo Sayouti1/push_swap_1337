@@ -46,7 +46,6 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		split_av = ft_split(av[1], ' ');
-		// getchar();
 		if (!split_av || ft_check_error(split_av) || ft_init_stack(&a, split_av,
 				0))
 		{
@@ -68,6 +67,5 @@ int	main(int ac, char **av)
 	if (ft_is_duplicated(a))
 		return (ft_free_stack_print_error(&a));
 	ft_sort_algo(&a, &b);
-	//ft_new_algo(&a, &b);
 	return (0);
 }
