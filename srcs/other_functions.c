@@ -24,12 +24,14 @@ int	ft_get_index(t_stack *a, int value)
 	int	i;
 
 	i = 0;
-	while (a->value != value)
+	while (a)
 	{
+		if (a->value == value)
+			return (i);
 		++i;
 		a = a->next;
 	}
-	return (i);
+	return (-1);
 }
 
 int	ft_check_error(char **str)

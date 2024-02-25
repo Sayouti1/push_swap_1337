@@ -6,7 +6,7 @@
 #    By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/24 02:55:39 by aes-sayo          #+#    #+#              #
-#    Updated: 2024/02/25 20:26:30 by aes-sayo         ###   ########.fr        #
+#    Updated: 2024/02/25 21:30:16 by aes-sayo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME=push_swap
 SRCS= srcs/push_swap.c srcs/algorithms_utils.c srcs/functions_utils.c srcs/other_functions.c srcs/stack_functions.c srcs/subject_functions_2.c srcs/subject_functions.c srcs/subject_functions_gen.c srcs/new_algo.c
 OBJS=$(SRCS:.c=.o)
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
-# -fsanitize=address
+CFLAGS=-Wall -Wextra -Werror 
+#-fsanitize=address
 
 all: $(NAME)
 

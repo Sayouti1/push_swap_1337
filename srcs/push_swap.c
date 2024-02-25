@@ -20,7 +20,6 @@ void	ft_sort_algo(t_stack **a, t_stack **b)
 			ft_sort_min(a, b);
 		else
 			ft_new_algo(a, b);
-			//ft_sort_large_stack(a, b);
 	}
 	free_stack(a);
 }
@@ -31,7 +30,6 @@ int	ft_free_stack_print_error(t_stack **a)
 	ft_putendl_fd("Error", 2);
 	return (1);
 }
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {

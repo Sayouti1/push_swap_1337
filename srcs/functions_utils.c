@@ -64,11 +64,11 @@ int	ft_index_of(int *arr, int x, int size)
 	return (-1);
 }
 
-void	ft_set_indexes(t_stack **a, int *arr, int size)
+void	ft_set_indexes(t_stack *a, int *arr, int size)
 {
 	t_stack	*tmp;
 
-	tmp = *a;
+	tmp = a;
 	while (tmp)
 	{
 		tmp->index = ft_index_of(arr, tmp->value, size);

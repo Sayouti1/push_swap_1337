@@ -12,12 +12,6 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_top(t_stack *stack_x)
-{
-	if (!stack_x)
-		return (NULL);
-	return (stack_x);
-}
 
 void	ft_swap(t_stack **stack_a)
 {
