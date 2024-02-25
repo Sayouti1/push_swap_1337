@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 void	ft_rrr(t_stack **a, t_stack **b)
 {
 	ft_reverse_rotate(a);
@@ -22,13 +22,17 @@ void	ft_rrr(t_stack **a, t_stack **b)
 int	ft_get_index(t_stack *a, int value)
 {
 	int	i;
+	// int	j;
 
 	i = 0;
+	// j = ft_stack_len(a);
 	while (a->value != value)
 	{
 		++i;
+		// j--;
 		a = a->next;
 	}
+	// printf("\nreturned index = [%d]", i);
 	return (i);
 }
 

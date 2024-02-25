@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 // int get_val_at_index(t_stack *a, int i)
 // {
@@ -78,19 +79,31 @@ int *get_sorted_arr(t_stack **a)
 
 void    init_range(t_stack *a, t_vars *vars)
 {
-    if (ft_stack_len(a) <= 50)
-            vars->range = 10;
-        else 
-        if (ft_stack_len(a) <= 100)
-            vars->range = 20;
-        else 
-        if (ft_stack_len(a) <= 200)
-            vars->range = 40;
-        else 
-        if (ft_stack_len(a) <= 500)
-            vars->range = 60;
-        else
-            vars->range = 80;
+    vars->size = ft_stack_len(a);
+    if (ft_stack_len(a) <= 100)
+        vars->range = 14; 
+        // vars->range = 13; 624
+        // vars->range = 11; 627
+        // vars->range = 10; 645
+        // vars->range = 9; 644
+        // vars->range = 8; 665
+        // vars->range = 7; 684
+    else 
+    if (ft_stack_len(a) <= 200)
+        vars->range = 17;
+    else 
+    if (ft_stack_len(a) <= 500)
+        vars->range = 28;
+        // vars->range = 27; 5136
+        // vars->range = 28; 5149
+        // vars->range = 29; 5158
+        // vars->range = 30; 5154
+        // vars->range = 34; 5159
+        // vars->range = 36; 5180
+        // vars->range = 38; 5194
+        //vars->range = 30;
+    else
+        vars->range = 50;
 }
 
 
@@ -99,12 +112,14 @@ int	ft_get_max(t_stack *a)
 	int	max;
 
 	max = a->value;
+    a = a->next;
 	while (a)
 	{
 		if (a->value > max)
 			max = a->value;
 		a = a->next;
 	}
+    // printf("\nmax returned = [%d]", max);
 	return (max);
 }
 
@@ -112,25 +127,28 @@ void    max_to_top(t_stack **b, int size)
 {
     int    i;
 
-    while (1)
+    i = ft_get_index(*b, ft_get_max(*b));
+    while (i != 0)
     {
-        i = ft_get_index(*b, ft_get_max(*b));
-        if (i == 0)
-            break ;
-        else if (i <= size / 2)
+        if (i <= size / 2)
             ft_rb(b);
-        else if (i > size / 2)
+        else 
             ft_rrb(b);
+        i = ft_get_index(*b, ft_get_max(*b));
     }
 }
 
-
-void    push_back_to_a(t_stack **b, t_stack **a)
+void    push_back_to_a(t_stack **a, t_stack **b)
 {
-    while ((*b))
+    while (*b)
     {
+        // printf("\n[%d] a.lengt = [%d], b.length = [%d]", (*b)->value, ft_stack_len(*a), ft_stack_len(*b));
         max_to_top(b, ft_stack_len(*b));
+        // if (ft_stack_len(*b) <= 25)
+        //     puts("below 25");
         ft_pa(a, b);
+        // if (ft_stack_len(*b) <= 25)
+        //     puts("below 25 aaa");
     }
 }
 
@@ -162,6 +180,7 @@ void    ft_new_algo(t_stack **a, t_stack **b)
         else 
             ft_ra(a);
     }
+    free(arr);
     push_back_to_a(a, b);
 }
 

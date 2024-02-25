@@ -14,7 +14,7 @@ NAME=push_swap
 SRCS= srcs/push_swap.c srcs/algorithms_utils.c srcs/functions_utils.c srcs/other_functions.c srcs/stack_functions.c srcs/subject_functions_2.c srcs/subject_functions.c srcs/subject_functions_gen.c srcs/new_algo.c
 OBJS=$(SRCS:.c=.o)
 CC=cc
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror# -fsanitize=address
 
 all: $(NAME)
 
