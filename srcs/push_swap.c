@@ -16,7 +16,7 @@ void	ft_sort_algo(t_stack **a, t_stack **b)
 {
 	if (!ft_is_sorted(*a))
 	{
-		if (ft_stack_len(*a) <= 40)
+		if (ft_stack_len(*a) <= 10)
 			ft_sort_min(a, b);
 		else
 			ft_new_algo(a, b);

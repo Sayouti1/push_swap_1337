@@ -21,7 +21,8 @@
 typedef struct s_stack
 {
 	int				value;
-	int				index;
+	size_t			index;
+	size_t			rank;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }					t_stack;
@@ -31,7 +32,7 @@ typedef struct s_stack
 t_stack				*ft_new_node(int value);
 void				ft_push_node(t_stack **stack_x, t_stack *node);
 t_stack				*ft_last(t_stack *stack_x);
-int					ft_stack_len(t_stack *stack_x);
+size_t				ft_stack_len(t_stack *stack_x);
 
 /*_______________________subject_functions______________________________*/
 
@@ -56,7 +57,7 @@ void				ft_reverse_rotate(t_stack **stack_x);
 
 /*________________________getters_______________________________________*/
 
-int					ft_get_index(t_stack *a, int value);
+size_t				ft_get_index(t_stack *a, int value);
 int					ft_get_min(t_stack *a);
 int					ft_index_of(int *arr, int x, int size);
 void				ft_set_indexes(t_stack *a, int *arr, int size);

@@ -13,20 +13,20 @@
 #include "push_swap.h"
 
 
-void	ft_swap(t_stack **stack_a)
+void	ft_swap(t_stack **stack_x)
 {
 	t_stack	*a;
 	t_stack	*b;
 
-	if (*stack_a == NULL || (*stack_a)->next == NULL)
+	if (*stack_x == NULL || (*stack_x)->next == NULL)
 		return ;
-	a = *stack_a;
-	b = (*stack_a)->next;
+	a = *stack_x;
+	b = (*stack_x)->next;
 	a->next = b->next;
 	a->prev = b;
 	b->next = a;
 	b->prev = NULL;
-	*stack_a = b;
+	*stack_x = b;
 }
 
 void	ft_push(t_stack **from, t_stack **to)

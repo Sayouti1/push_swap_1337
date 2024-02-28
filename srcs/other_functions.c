@@ -19,9 +19,9 @@ void	ft_rrr(t_stack **a, t_stack **b)
 	ft_putstr_fd("rrr\n", 1);
 }
 
-int	ft_get_index(t_stack *a, int value)
+size_t	ft_get_index(t_stack *a, int value)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (a)

@@ -46,9 +46,9 @@ t_stack	*ft_last(t_stack *stack_x)
 	return (stack_x);
 }
 
-int	ft_stack_len(t_stack *stack_x)
+size_t	ft_stack_len(t_stack *stack_x)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (stack_x)
