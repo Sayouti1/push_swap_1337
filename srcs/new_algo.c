@@ -38,11 +38,13 @@ int    get_range(t_stack *a)
     int size;
 
     size = ft_stack_len(a);
-    if (ft_stack_len(a) <= 100)
+    if (ft_stack_len(a) <= 50)
+        return (13); 
+    else if (ft_stack_len(a) <= 100)
         return (14); 
     else if (ft_stack_len(a) <= 200)
         return (17);
-    else if (ft_stack_len(a) <= 500)
+    else if (ft_stack_len(a) <= 550)
         return (28);
     else
         return (50);
@@ -52,15 +54,18 @@ int    get_range(t_stack *a)
 void    update_max_rank(t_stack **b, size_t  *max_rank, size_t  *max_index)
 {
     t_stack *tmp;
-    
-    int     i;
+    size_t  length;
+    size_t  i;
 
     tmp = *b;
+    length = ft_stack_len(tmp);
     *max_index = tmp->index;
     *max_rank = 0;
     i = 0;
     while (tmp)
     {
+       
+        printf("\nloop : max_rank[%zu], max_index[%zu]", *max_rank, *max_index);
         if (tmp->index > *max_index)
         {
             *max_index = tmp->index;
@@ -68,62 +73,29 @@ void    update_max_rank(t_stack **b, size_t  *max_rank, size_t  *max_index)
         }
         i++;
         tmp = tmp->next;
+        if (i == length)
+            break;
     }
+    printf("\n_____________________PASSED__________________");
 }
 void    max_to_top(t_stack **b)
 {
     size_t  b_length;
     size_t  max_index;
-    // int     i;
     size_t  max_rank;
-    //t_stack *tmp;
 
     b_length = ft_stack_len(*b);
-    /*tmp = *b;
-    max_index = tmp->index;
-    max_rank = 0;
-    i = 0;
-    while (tmp)
-    {
-        if (tmp->index > max_index)
-        {
-            max_index = tmp->index;
-            max_rank = i;
-        }
-        i++;
-        tmp = tmp->next;
-    }*/
-    // printf("\nb->length = [%zu] max_index = [%zu], max_rank = [%zu]", b_length,max_index, max_rank);
-    // if (b_length <= 16)
-    // {
-    //     t_stack *ttmp;
-    //     ttmp = *b;
-    //     while (ttmp)
-    //     {
-    //         printf("\n [%d] - [%zu]", ttmp->value, ttmp->index);
-    //         ttmp = ttmp->next;
-    //     }
-        
-    // }
-    // getchar();
     update_max_rank(b, &max_rank, &max_index);
     while ((*b)->index != max_index)
     {
         
-        if ( printf("\n div == [%zu] ",b_length / max_rank) && (b_length / max_rank) >= 2 )
+        if (max_rank <= (b_length/2))
             ft_rb(b);
         else
             ft_rrb(b);
+        printf("\nb_length=[%zu], max_rank=[%zu]", b_length, max_rank);
         update_max_rank(b, &max_rank, &max_index);
     }
-    t_stack *ttmp;
-    ttmp = *b;
-    while (ttmp)
-    {
-        printf("\n size = [%zu], [%d] - [%zu], max_rank = [%zu] max_index = [%zu]",b_length, ttmp->value, ttmp->index, max_rank, max_index);
-        ttmp = ttmp->next;
-    }
-    getchar();
 }
 
 void    push_back_to_a(t_stack **a, t_stack **b)
@@ -132,7 +104,6 @@ void    push_back_to_a(t_stack **a, t_stack **b)
     {
         max_to_top(b);
         ft_pa(a, b);
-        //printf("\n a->value = [%d]", (*a)->value);
     }
 }
 

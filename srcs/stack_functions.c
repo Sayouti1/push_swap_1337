@@ -53,6 +53,7 @@ size_t	ft_stack_len(t_stack *stack_x)
 	i = 0;
 	while (stack_x)
 	{
+		printf("\n i = [%zu], value = [%d]", i, stack_x->value);
 		++i;
 		stack_x = stack_x->next;
 	}
