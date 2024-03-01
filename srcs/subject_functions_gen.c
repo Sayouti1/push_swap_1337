@@ -12,69 +12,54 @@
 
 #include "push_swap.h"
 
-
 void	ft_swap(t_stack **stack_x)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	*tmp;
 
-	if (*stack_x == NULL || (*stack_x)->next == NULL)
+	if (ft_stack_len(*stack_x) < 2)
 		return ;
-	a = *stack_x;
-	b = (*stack_x)->next;
-	a->next = b->next;
-	a->prev = b;
-	b->next = a;
-	b->prev = NULL;
-	*stack_x = b;
+	tmp = (*stack_x)->next;
+	(*stack_x)->next = tmp->next;
+	tmp->next = *stack_x;
+	*stack_x = tmp;
 }
 
 void	ft_push(t_stack **from, t_stack **to)
 {
 	t_stack	*tmp;
 
-	if (!*from)
+	if (!(*from))
 		return ;
-	tmp = *from;
-	(*from) = tmp->next;
-	if (*from)
-		(*from)->prev = NULL;
-	if (*to)
-	{
-		tmp->next = *to;
-		(*to)->prev = tmp;
-	}
-	else
-		tmp->next = NULL;
-	*to = tmp;
+	tmp = (*from)->next;
+	(*from)->next = *to;
+	*to = *from;
+	*from = tmp;
 }
 
 void	ft_rotate(t_stack **stack_x)
 {
-	t_stack	*a;
-	t_stack	*last;
+	t_stack	*tmp;
 
-	if (*stack_x == NULL || (*stack_x)->next == NULL)
+	if (ft_stack_len(*stack_x) < 2)
 		return ;
-	a = *stack_x;
-	last = ft_last(*stack_x);
-	a->prev = last;
-	last->next = a;
-	*stack_x = a->next;
-	(*stack_x)->prev = NULL;
-	a->next = NULL;
+	tmp = *stack_x;
+	*stack_x = (*stack_x)->next;
+	tmp->next = NULL;
+	ft_last(*stack_x)->next = tmp;
 }
 
 void	ft_reverse_rotate(t_stack **stack_x)
 {
+	t_stack	*tmp;
 	t_stack	*last;
 
-	if (*stack_x == NULL || (*stack_x)->next == NULL)
+	if (ft_stack_len(*stack_x) < 2)
 		return ;
 	last = ft_last(*stack_x);
-	last->prev->next = NULL;
-	(*stack_x)->prev = last;
-	last->next = (*stack_x);
-	last->prev = NULL;
-	(*stack_x) = last;
+	tmp = *stack_x;
+	while (tmp->next->next)
+		tmp = tmp->next;
+	tmp->next = NULL;
+	last->next = *stack_x;
+	*stack_x = last;
 }

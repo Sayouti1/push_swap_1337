@@ -21,7 +21,6 @@ t_stack	*ft_new_node(int value)
 		return (NULL);
 	node->value = value;
 	node->next = NULL;
-	node->prev = NULL;
 	return (node);
 }
 
@@ -32,7 +31,6 @@ void	ft_push_node(t_stack **stack_x, t_stack *node)
 	else
 	{
 		node->next = *stack_x;
-		(*stack_x)->prev = node;
 		*stack_x = node;
 	}
 }
@@ -53,7 +51,6 @@ size_t	ft_stack_len(t_stack *stack_x)
 	i = 0;
 	while (stack_x)
 	{
-		printf("\n i = [%zu], value = [%d]", i, stack_x->value);
 		++i;
 		stack_x = stack_x->next;
 	}

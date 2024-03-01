@@ -64,12 +64,10 @@ void	ft_sort_min(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (ft_is_sorted(*a))
-		return ;
 	while (ft_stack_len(*a) > 3)
 	{
 		tmp = *a;
-		while (tmp && tmp->value != ft_get_min(*a))
+		while (tmp->value != ft_get_min(*a))
 		{
 			if (ft_get_index(*a, ft_get_min(*a)) <= (ft_stack_len(*a) / 2))
 				ft_ra(a);

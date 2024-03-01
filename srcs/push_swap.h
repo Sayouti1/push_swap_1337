@@ -24,7 +24,6 @@ typedef struct s_stack
 	size_t			index;
 	size_t			rank;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }					t_stack;
 
 /*_______________________stack_functions________________________________*/
