@@ -12,26 +12,12 @@
 
 #include "push_swap.h"
 
-void	ft_rrr(t_stack **a, t_stack **b)
+void	ft_rrr(t_stack **a, t_stack **b, int out)
 {
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
-	ft_putstr_fd("rrr\n", 1);
-}
-
-size_t	ft_get_index(t_stack *a, int value)
-{
-	size_t	i;
-
-	i = 0;
-	while (a)
-	{
-		if (a->value == value)
-			return (i);
-		++i;
-		a = a->next;
-	}
-	return (-1);
+	if (out)
+		ft_putstr_fd("rrr\n", 1);
 }
 
 int	ft_check_error(char **str)

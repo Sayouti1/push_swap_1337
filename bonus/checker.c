@@ -1,93 +1,49 @@
 #include "push_swap.h"
 
-
-int check_nl(char *str)
-{
-    int i;
-
-    if (!str || !str[0])
-        return (0);
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == '\n')
-            return (1);
-        ++i;
-    }
-    return (0);
-}
-int	ft_strlen_gnl(char *str)
-{
-	int	i;
-
-	if (str == NULL)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin_gnl(char *old_line, char *buff)
-{
-	int		i;
-	int		j;
-	char	*new_line;
-
-	j = ft_strlen_gnl(buff) + ft_strlen_gnl(old_line);
-	new_line = (char *)malloc(sizeof(char) * (j + 1));
-	if (!new_line)
-	{
-		free(old_line);
-		return (NULL);
-	}
-	i = 0;
-	j = 0;
-	while (old_line && old_line[i])
-		new_line[j++] = old_line[i++];
-	i = 0;
-	while (buff[i])
-		new_line[j++] = buff[i++];
-	new_line[j] = '\0';
-	if (old_line)
-		free(old_line);
-	return (new_line);
-}
-
-
-char    *read_command()
-{
-    int     byte_read;
-    char    *read;
-    char    *buff;
-
-    buff = (char*)malloc(sizeof(char) * 4);
-    if (!buff)
-        return (NULL);
-    buff[0] = 0;
-    byte_read = 1;
-    read = NULL;
-    while (!check_nl(buff) && byte_read > 0)
-    {
-        byte_read = read(1, buff, 4);
-        if (byte_read < 0)
-            puts("ERROR");
-        buff[byte_read] = '\0';
-        read = ft_strjoin_gnl(read, buff);
-    }
-    free(buff);
-    return (read);
-}
 void	ft_checker(t_stack **a, t_stack **b)
 {
     size_t  a_length;
+	char	*move;
 
-    a_length = ft_stack_len(*a);
-    
+    a_length = ft_stack_len(*a);    
 	while (!ft_is_sorted(*a) || ft_stack_len(*a) != a_length)
     {
+		move = get_next_line(0);
+		if (!ft_strncmp(move, "pa\n", 4))
+			ft_pa(a, b ,0);
+		else if (!ft_strncmp(move, "pb\n", 4))
+				ft_pb(a, b ,0);
+		else if (!ft_strncmp(move, "ra\n", 4))
+				ft_ra(a, b ,0);
+		else if (!ft_strncmp(move, "rb\n", 4))
+				ft_rb(a, b ,0);
+		else if (!ft_strncmp(move, "rr\n", 4))
+				ft_rr(a, b ,0);
+		else if (!ft_strncmp(move, "sa\n", 4))
+				ft_sa(a, 0);
+		else if (!ft_strncmp(move, "sb\n", 4))
+				ft_sb(b, 0);
+		else if (!ft_strncmp(move, "ss\n", 4))
+				ft_ss(a, b, 0);
+		else if (!ft_strncmp(move, "rra\n", 5))
+				ft_rra(a, 0);
+		else if (!ft_strncmp(move, "rrb\n", 5))
+				ft_rrb(b, 0);
+		else if (!ft_strncmp(move, "rrr\n", 5))
+				ft_rrr(a, b, 0);
+		else
+		{
+			ft_putstr_fd("Error\n", 1);
+			free(move);
+			free_stack(a);
+			return ;
+		}
+		free(move);
     }
-    
+	if (ft_is_sorted(*a) && !ft_stack_len(*b))
+		ft_putstr_fd("OK", 1);
+	else
+		ft_putstr_fd("OK", 1);
 	free_stack(a);
 }
 
