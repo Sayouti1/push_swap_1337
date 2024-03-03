@@ -14,10 +14,10 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*line = NULL;
+	static char	*line;
 	char		*final_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
 	line = get_text(fd, line);
 	if (line == NULL)
@@ -48,14 +48,14 @@ char	*get_text(int fd, char *line)
 	char	*buff;
 	int		bytes_read;
 
-	buff = (char *)malloc(sizeof(char) * ((size_t)(BUFFER_SIZE) + 1));
+	buff = (char *)malloc(sizeof(char) * (6));
 	if (!buff)
 		return (NULL);
 	buff[0] = 0;
 	bytes_read = 1;
 	while (!check_new_line(buff) && bytes_read != 0)
 	{
-		bytes_read = read(fd, buff, BUFFER_SIZE);
+		bytes_read = read(fd, buff, 4);
 		if (bytes_read == -1)
 		{
 			free(buff);
