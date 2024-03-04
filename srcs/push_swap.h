@@ -67,11 +67,13 @@ int					ft_get_min(t_stack *a);
 int					ft_index_of(int *arr, int x, int size);
 void				ft_set_indexes(t_stack *a, int *arr, int size);
 int					ft_init_stack(t_stack **a, char **tab, int from_argv);
+int					ft_init_stack_stack(t_stack **a, t_argv **av);
 
 /*_________________________check_functions______________________________*/
 int					ft_is_sorted(t_stack *stack_x);
 int					ft_is_duplicated(t_stack *a);
 int					ft_check_error(char **str);
+int					ft_check_error_stack(t_argv *av);
 
 /*_________________________________new_algo.c___________________________*/
 

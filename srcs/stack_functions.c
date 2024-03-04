@@ -26,12 +26,16 @@ t_stack	*ft_new_node(int value)
 
 void	ft_push_node(t_stack **stack_x, t_stack *node)
 {
+	t_stack	*tmp;
+
 	if (*stack_x == NULL)
 		*stack_x = node;
 	else
 	{
-		node->next = *stack_x;
-		*stack_x = node;
+		tmp = *stack_x;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = node;
 	}
 }
 

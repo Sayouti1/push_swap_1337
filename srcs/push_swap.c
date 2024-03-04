@@ -58,7 +58,16 @@ void	ft_argv_add(t_argv	**head, t_argv *av)
 }
 int	check_overflow(char *str)
 {
-	return (1 == 1);
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		++i;
+	while (str[i] == '0')
+		++i;
+	if (ft_strlen(str) - i > 10)
+		return (1);
+	return (0);
 }
 int	main(int ac, char **av)
 {
@@ -71,86 +80,65 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac == 1)
 		return (0);
-	if (ac >= 2)
-	{
-		i = 1;
-		split_av = ft_new_argv(av[i++]);
-		while (i < ac)
-			ft_argv_add(&split_av, ft_new_argv(av[i++]));
-		t_argv *tmp;
-
-		tmp = split_av;
-		int	x;
-		while (tmp)
-		{
-			x = 0;
-			if (!tmp->split)
-				puts("SPLIT ERROR ");
-			while (tmp->split && tmp->split[x])
-			{
-				check_overflow(tmp->split[x]);
-				printf("\n[%s]", tmp->split[x++]);
-			}
-			tmp = tmp->next;
-		}
-					
-		// if (!split_av || ft_check_error(split_av) || ft_init_stack(&a, split_av,
-		// 		0))
-		// {
-		// 	if (split_av)
-		// 	{
-		// 		int i = 0;
-		// 		while (split_av[i]
-		// 		{
-		// 			free(split_av[i++]);
-		// 		}
-		// 		free(split_av);
-		// 		ft_putendl_fd("Error", 2);
-		// 	}
-		// 	return (0);
-		// }
-	}
-	// else if (ft_check_error(av + 1) || ft_init_stack(&a, av + 1, 1))
-	// 	return (ft_free_stack_print_error(&a));
-	// if (ft_is_duplicated(a))
-	// 	return (ft_free_stack_print_error(&a));
-	// ft_sort_algo(&a, &b);
+	i = 1;
+	split_av = ft_new_argv(av[i++]);
+	while (i < ac)
+		ft_argv_add(&split_av, ft_new_argv(av[i++]));
+	if (!split_av)
+		return (ft_putendl_fd("Error", 2), 0);
+	if (ft_check_error_stack(split_av))
+		return (ft_putendl_fd("Error", 2), 0);
+	if (ft_init_stack_stack(&a, &split_av))
+		return (ft_putendl_fd("Error", 2), 0);
+	if (ft_is_duplicated(a))
+		return (ft_free_stack_print_error(&a));
+	ft_sort_algo(&a, &b);
 	return (0);
 }
 
-// int	main(int ac, char **av)
-// {
-// 	t_stack	*a;
-// 	t_stack	*b;
-// 	char	**split_av;
 
-// 	a = NULL;
-// 	b = NULL;
-// 	if (ac == 1)
-// 		return (0);
-// 	if (ac == 2)
-// 	{
-// 		split_av = ft_split(av[1], ' ');
-// 		if (!split_av || ft_check_error(split_av) || ft_init_stack(&a, split_av,
-// 				0))
-// 		{
-// 			if (split_av)
-// 			{
-// 				int i = 0;
-// 				while (split_av[i])
-// 				{
-// 					free(split_av[i++]);
-// 				}
-// 				free(split_av);
-// 				ft_putendl_fd("Error", 2);
-// 			}
-// 			return (0);
-// 		}
-// 	}
-// 	else if (ft_check_error(av + 1) || ft_init_stack(&a, av + 1, 1))
-// 		return (ft_free_stack_print_error(&a));
-// 	if (ft_is_duplicated(a))
-// 		return (ft_free_stack_print_error(&a));
-// 	ft_sort_algo(&a, &b);
-// 	return (0);
-// }
+
+
+
+
+
+
+
+/*
+int	main(int ac, char **av)
+{
+	t_stack	*a;
+	t_stack	*b;
+	char	**split_av;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1)
+		return (0);
+	if (ac == 2)
+	{
+		split_av = ft_split(av[1], ' ');
+		if (!split_av || ft_check_error(split_av) || ft_init_stack(&a, split_av,
+				0))
+		{
+			if (split_av)
+			{
+				int i = 0;
+				while (split_av[i])
+				{
+					free(split_av[i++]);
+				}
+				free(split_av);
+				ft_putendl_fd("Error", 2);
+			}
+			return (0);
+		}
+	}
+	else if (ft_check_error(av + 1) || ft_init_stack(&a, av + 1, 1))
+		return (ft_free_stack_print_error(&a));
+	if (ft_is_duplicated(a))
+		return (ft_free_stack_print_error(&a));
+	ft_sort_algo(&a, &b);
+	return (0);
+}
+*/
