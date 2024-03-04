@@ -49,7 +49,7 @@ void	ft_checker(t_stack **a, t_stack **b)
 			ft_rrr(a, b, 0);
 		else
 		{
-			ft_putstr_fd("Error\n", 1);
+			ft_putstr_fd("Error\n", 2);
 			free(move);
 			free_stack(a);
 			return ;
@@ -58,9 +58,9 @@ void	ft_checker(t_stack **a, t_stack **b)
 		move = get_next_line(0);
     }
 	if (ft_is_sorted(*a) && !ft_stack_len(*b))
-		ft_putstr_fd("OK", 1);
+		ft_putstr_fd("OK\n", 1);
 	else
-		ft_putstr_fd("KO", 1);
+		ft_putstr_fd("KO\n", 1);
 	free_stack(a);
 }
 

@@ -26,6 +26,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+typedef	struct s_argv
+{
+	char 			**split;
+	struct s_argv 	*next;
+}					t_argv;
+
 /*_______________________stack_functions________________________________*/
 
 t_stack				*ft_new_node(int value);
