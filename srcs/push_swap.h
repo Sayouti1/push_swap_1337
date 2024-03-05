@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 02:52:50 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/01/24 02:52:52 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:57:59 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:58:01 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-typedef	struct s_argv
+typedef struct s_argv
 {
-	char 			**split;
-	struct s_argv 	*next;
+	char			**split;
+	struct s_argv	*next;
 }					t_argv;
 
 /*_______________________stack_functions________________________________*/
@@ -64,28 +64,27 @@ void				ft_reverse_rotate(t_stack **stack_x);
 
 size_t				ft_get_index(t_stack *a, int value);
 int					ft_get_min(t_stack *a);
-int					ft_index_of(int *arr, int x, int size);
-void				ft_set_indexes(t_stack *a, int *arr, int size);
-int					ft_init_stack(t_stack **a, char **tab, int from_argv);
+size_t				ft_index_of(int *arr, int x, size_t size);
+void				ft_set_indexes(t_stack *a, int *arr, size_t size);
 int					ft_init_stack_stack(t_stack **a, t_argv **av);
 
 /*_________________________check_functions______________________________*/
 int					ft_is_sorted(t_stack *stack_x);
 int					ft_is_duplicated(t_stack *a);
-int					ft_check_error(char **str);
 int					ft_check_error_stack(t_argv *av);
 
-/*_________________________________new_algo.c___________________________*/
+/*_________________________________sort_big.c___________________________*/
 
 void				ft_sort_algo(t_stack **a, t_stack **b);
-void    			ft_new_algo(t_stack **a, t_stack **b);
+void				ft_sort_big(t_stack **a, t_stack **b);
 void				ft_sort_three(t_stack **a);
 void				ft_sort_min(t_stack **a, t_stack **b);
-void				ft_selection_sort(int *arr, int size);
+void				ft_selection_sort(int *arr, size_t size);
 
 /*_________________________________utils________________________________*/
 
 long				ft_atol(char *str);
 void				free_stack(t_stack **a);
+void				free_split_av(t_argv **av);
 
 #endif

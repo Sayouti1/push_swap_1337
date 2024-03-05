@@ -5,18 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 01:56:21 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/01/24 01:56:40 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:57:24 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:57:28 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_selection_sort(int *arr, int size)
+void	ft_rrr(t_stack **a, t_stack **b)
 {
-	int	i;
-	int	j;
-	int	tmp;
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
+	ft_putstr_fd("rrr\n", 1);
+}
+
+void	ft_sort_algo(t_stack **a, t_stack **b)
+{
+	if (!ft_is_sorted(*a))
+	{
+		if (ft_stack_len(*a) <= 10)
+			ft_sort_min(a, b);
+		else
+			ft_sort_big(a, b);
+	}
+	free_stack(a);
+}
+
+void	ft_selection_sort(int *arr, size_t size)
+{
+	size_t	i;
+	size_t	j;
+	int		tmp;
 
 	i = 0;
 	while (i < size)
@@ -81,4 +100,3 @@ void	ft_sort_min(t_stack **a, t_stack **b)
 	while (*b)
 		ft_pa(a, b);
 }
-

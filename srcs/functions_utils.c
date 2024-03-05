@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 01:58:35 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/01/24 01:58:48 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:57:32 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:57:36 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	free_stack(t_stack **a)
 	}
 }
 
-int	ft_index_of(int *arr, int x, int size)
+size_t	ft_index_of(int *arr, int x, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < size)
@@ -61,10 +61,10 @@ int	ft_index_of(int *arr, int x, int size)
 			return (i);
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
-void	ft_set_indexes(t_stack *a, int *arr, int size)
+void	ft_set_indexes(t_stack *a, int *arr, size_t size)
 {
 	t_stack	*tmp;
 

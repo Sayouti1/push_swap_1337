@@ -5,71 +5,83 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 02:18:12 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/01/24 02:18:23 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:57:42 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:57:45 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rrr(t_stack **a, t_stack **b, int out)
+int	ft_check_error_stack(t_argv *av)
 {
-	ft_reverse_rotate(a);
-	ft_reverse_rotate(b);
-	if (out)
-		ft_putstr_fd("rrr\n", 1);
-}
+	size_t	i;
+	size_t	j;
 
-int	ft_check_error(char **str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i])
+	while (av)
 	{
-		j = 0;
-		while (str[i][j])
+		i = 0;
+		while (av->split && av->split[i])
 		{
-			if (!ft_isdigit(str[i][j]) && (str[i][j] != '-'
-					&& str[i][j] != '+'))
-				return (1);
-			if (str[i][j] && (str[i][j] == '-' || str[i][j] == '+'))
-				if (!str[i][j + 1] || (str[i][j + 1] && !ft_isdigit(str[i][j
-							+ 1])))
+			j = 0;
+			while (av->split[i][j])
+			{
+				if (!ft_isdigit(av->split[i][j]) && (av->split[i][j] != '-'
+						&& av->split[i][j] != '+'))
 					return (1);
-			++j;
+				if ((av->split[i][j] == '-' || av->split[i][j] == '+') && (j > 0
+				|| !av->split[i][j + 1] || (av->split[i][j + 1]
+				&& !ft_isdigit(av->split[i][j + 1]))))
+					return (1);
+				++j;
+			}
+			++i;
 		}
-		++i;
+		av = av->next;
 	}
 	return (0);
 }
 
-int	ft_init_stack(t_stack **a, char **tab, int from_argv)
+void	free_split_av(t_argv **av)
 {
-	int	i;
+	t_argv	*tmp;
+	size_t	i;
 
-	i = 0;
-	while (tab[i])
-		++i;
-	--i;
-	while (i >= 0)
-	{
-		if (ft_atol(tab[i]) > INT_MAX || ft_atol(tab[i]) < INT_MIN)
-		{
-			free_stack(a);
-			return (1);
-		}
-		ft_push_node(a, ft_new_node(ft_atol(tab[i])));
-		--i;
-	}
-	if (!from_argv)
+	tmp = *av;
+	while (*av)
 	{
 		i = 0;
-		while (tab[i])
-			free(tab[i++]);
-		free(tab);
+		while ((*av)->split && (*av)->split[i])
+			free((*av)->split[i++]);
+		free((*av)->split);
+		tmp = (*av)->next;
+		free(*av);
+		*av = tmp;
 	}
+}
+
+int	ft_init_stack_stack(t_stack **a, t_argv **av)
+{
+	size_t		i;
+	t_argv		*tmp;
+
+	tmp = *av;
+	while (tmp)
+	{
+		i = 0;
+		while (tmp->split && tmp->split[i])
+		{
+			if (ft_atol(tmp->split[i]) > INT_MAX
+				|| ft_atol(tmp->split[i]) < INT_MIN)
+			{
+				free_stack(a);
+				return (1);
+			}
+			ft_push_node(a, ft_new_node(ft_atol(tmp->split[i])));
+			++i;
+		}
+		tmp = tmp->next;
+	}
+	free_split_av(av);
 	return (0);
 }
 

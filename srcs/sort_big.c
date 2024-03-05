@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_algo.c                                         :+:      :+:    :+:   */
+/*   sort_big.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 17:18:48 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/02/21 17:18:51 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:58:05 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:58:07 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	*get_sorted_arr(t_stack *a)
 {
-	int		*sorted_tab;
-	t_stack	*tmp;
-	int		i;
+	int			*sorted_tab;
+	t_stack		*tmp;
+	size_t		i;
 
 	i = 0;
 	sorted_tab = (int *)malloc(sizeof(int) * ft_stack_len(a));
@@ -72,6 +72,7 @@ void	update_max_rank(t_stack **b, size_t *max_rank, size_t *max_index)
 		tmp = tmp->next;
 	}
 }
+
 void	max_to_top(t_stack **b)
 {
 	size_t	b_length;
@@ -99,17 +100,22 @@ void	push_back_to_a(t_stack **a, t_stack **b)
 	}
 }
 
-void	ft_new_algo(t_stack **a, t_stack **b)
+int	*init_vars_get_arr(t_stack *a, int *range, size_t *stack_len, size_t *i)
 {
-	int	range;
-	int	*arr;
-	int	i;
-	int	stack_len;
+	*stack_len = ft_stack_len(a);
+	*range = get_range(a);
+	*i = 0;
+	return (get_sorted_arr(a));
+}
 
-	stack_len = ft_stack_len(*a);
-	range = get_range(*a);
-	arr = get_sorted_arr(*a);
-	i = 0;
+void	ft_sort_big(t_stack **a, t_stack **b)
+{
+	int		range;
+	int		*arr;
+	size_t	i;
+	size_t	stack_len;
+
+	arr = init_vars_get_arr(*a, &range, &stack_len, &i);
 	while (*a)
 	{
 		if (i <= stack_len - 1 && (*a)->value <= arr[i])
@@ -119,7 +125,7 @@ void	ft_new_algo(t_stack **a, t_stack **b)
 			++i;
 		}
 		else if ((i <= stack_len - 1 && (*a)->value > arr[i]) && (range
-					+ i <= stack_len - 1 && (*a)->value <= arr[range + i]))
+				+ i <= stack_len - 1 && (*a)->value <= arr[range + i]))
 		{
 			ft_pb(a, b);
 			if (ft_stack_len(*b) > 1 && (*b)->value < (*b)->next->value)

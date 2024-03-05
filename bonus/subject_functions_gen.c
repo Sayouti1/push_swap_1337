@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   subject_methods_gen.c                              :+:      :+:    :+:   */
+/*   subject_functions_gen.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 02:12:16 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/01/24 02:12:27 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:58:38 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:58:40 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,11 @@ void	ft_reverse_rotate(t_stack **stack_x)
 	tmp->next = NULL;
 	last->next = *stack_x;
 	*stack_x = last;
+}
+
+void	ft_rrr(t_stack **a, t_stack **b)
+{
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
+	ft_putstr_fd("rrr\n", 1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_methods.c                                    :+:      :+:    :+:   */
+/*   stack_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/24 02:05:03 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/01/24 02:05:17 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:58:13 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:58:15 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ t_stack	*ft_new_node(int value)
 
 void	ft_push_node(t_stack **stack_x, t_stack *node)
 {
+	t_stack	*tmp;
+
 	if (*stack_x == NULL)
 		*stack_x = node;
 	else
 	{
-		node->next = *stack_x;
-		*stack_x = node;
+		tmp = *stack_x;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = node;
 	}
 }
 
