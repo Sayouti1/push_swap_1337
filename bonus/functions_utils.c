@@ -49,3 +49,46 @@ void	free_stack(t_stack **a)
 		*a = tmp;
 	}
 }
+
+int	ft_strcmp_1(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+t_argv	*ft_new_argv(char *av)
+{
+	t_argv	*argv;
+
+	argv = (t_argv *)malloc(sizeof(t_argv));
+	if (!argv)
+		return (NULL);
+	argv->split = ft_split(av, ' ');
+	argv->next = NULL;
+	return (argv);
+}
+
+void	ft_argv_add(t_argv	**head, t_argv *av)
+{
+	t_argv	*tmp;
+
+	if (!*head)
+	{
+		*head = av;
+		return ;
+	}
+	tmp = *head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = av;
+}

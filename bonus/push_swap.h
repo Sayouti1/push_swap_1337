@@ -70,5 +70,9 @@ int					ft_check_error_stack(t_argv *av);
 long				ft_atol(char *str);
 void				free_stack(t_stack **a);
 void				free_split_av(t_argv **av);
+int					ft_strcmp_1(char *s1, char *s2);
+int					ft_free_stack_print_error(t_stack **a);
+t_argv				*ft_new_argv(char *av);
+void				ft_argv_add(t_argv	**head, t_argv *av);
 
 #endif

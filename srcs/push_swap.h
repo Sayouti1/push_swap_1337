@@ -86,5 +86,7 @@ void				ft_selection_sort(int *arr, size_t size);
 long				ft_atol(char *str);
 void				free_stack(t_stack **a);
 void				free_split_av(t_argv **av);
+int					*get_sorted_arr(t_stack *a);
+int					get_range(t_stack *a);
 
 #endif

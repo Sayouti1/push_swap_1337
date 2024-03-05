@@ -102,3 +102,10 @@ int	ft_is_duplicated(t_stack *a)
 	}
 	return (0);
 }
+
+int	ft_free_stack_print_error(t_stack **a)
+{
+	free_stack(a);
+	ft_putendl_fd("Error", 2);
+	return (1);
+}

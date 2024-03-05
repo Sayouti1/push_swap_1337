@@ -12,46 +12,6 @@
 
 #include "push_swap.h"
 
-int	*get_sorted_arr(t_stack *a)
-{
-	int			*sorted_tab;
-	t_stack		*tmp;
-	size_t		i;
-
-	i = 0;
-	sorted_tab = (int *)malloc(sizeof(int) * ft_stack_len(a));
-	if (!sorted_tab)
-		return (NULL);
-	tmp = a;
-	while (tmp)
-	{
-		sorted_tab[i++] = tmp->value;
-		tmp = tmp->next;
-	}
-	ft_selection_sort(sorted_tab, ft_stack_len(a));
-	ft_set_indexes(a, sorted_tab, ft_stack_len(a));
-	return (sorted_tab);
-}
-
-int	get_range(t_stack *a)
-{
-	int	size;
-
-	size = ft_stack_len(a);
-	if (ft_stack_len(a) <= 25)
-		return (7);
-	else if (ft_stack_len(a) <= 50)
-		return (13);
-	else if (ft_stack_len(a) <= 100)
-		return (14);
-	else if (ft_stack_len(a) <= 200)
-		return (17);
-	else if (ft_stack_len(a) <= 550)
-		return (28);
-	else
-		return (50);
-}
-
 void	update_max_rank(t_stack **b, size_t *max_rank, size_t *max_index)
 {
 	t_stack	*tmp;
@@ -118,17 +78,27 @@ void	ft_sort_big(t_stack **a, t_stack **b)
 	arr = init_vars_get_arr(*a, &range, &stack_len, &i);
 	while (*a)
 	{
-		if (i <= stack_len - 1 && (*a)->value <= arr[i])
+		// if (i <= stack_len - 1 && (*a)->value <= arr[i])
+		// {
+		// 	ft_pb(a, b);
+		// 	ft_rb(b);
+		// 	++i;
+		// }
+		// else if ((i <= stack_len - 1 && (*a)->value > arr[i]) && (range
+		// 		+ i <= stack_len - 1 && (*a)->value <= arr[range + i]))
+		// {
+		// 	ft_pb(a, b);
+		// 	if (ft_stack_len(*b) > 1 && (*b)->value < (*b)->next->value)
+		// 		ft_sb(b);
+		// 	++i;
+		// }
+		if (i <= stack_len - 1 && (((*a)->value <= arr[i]) || ((range + i
+						<= stack_len - 1 && (*a)->value <= arr[range + i]))))
 		{
 			ft_pb(a, b);
-			ft_rb(b);
-			++i;
-		}
-		else if ((i <= stack_len - 1 && (*a)->value > arr[i]) && (range
-				+ i <= stack_len - 1 && (*a)->value <= arr[range + i]))
-		{
-			ft_pb(a, b);
-			if (ft_stack_len(*b) > 1 && (*b)->value < (*b)->next->value)
+			if ((*b)->value <= arr[i])
+				ft_rb(b);
+			else if (ft_stack_len(*b) > 1 && (*b)->value < (*b)->next->value)
 				ft_sb(b);
 			++i;
 		}
