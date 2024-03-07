@@ -14,6 +14,8 @@
 
 void	ft_rrr(t_stack **a, t_stack **b)
 {
+	if (!*a && !*b)
+		return ;
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
 	ft_putstr_fd("rrr\n", 1);
@@ -21,12 +23,16 @@ void	ft_rrr(t_stack **a, t_stack **b)
 
 void	ft_sort_algo(t_stack **a, t_stack **b)
 {
+	size_t	stack_len;
+
 	if (!ft_is_sorted(*a))
 	{
 		if (ft_stack_len(*a) <= 10)
 			ft_sort_min(a, b);
 		else
-			ft_sort_big(a, b);
+		{
+			ft_sort_big(a, b, &stack_len);
+		}
 	}
 	free_stack(a);
 }

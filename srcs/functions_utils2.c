@@ -51,3 +51,17 @@ int	get_range(t_stack *a)
 	else
 		return (50);
 }
+/*
+	9
+	0
+	5
+	12
+	3
+	6
+	7
+	8
+	1
+	4
+	2
+	10
+*/

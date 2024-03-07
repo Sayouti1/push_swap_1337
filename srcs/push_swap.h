@@ -76,7 +76,7 @@ int					ft_check_error_stack(t_argv *av);
 /*_________________________________sort_big.c___________________________*/
 
 void				ft_sort_algo(t_stack **a, t_stack **b);
-void				ft_sort_big(t_stack **a, t_stack **b);
+void				ft_sort_big(t_stack **a, t_stack **b, size_t *stack_len);
 void				ft_sort_three(t_stack **a);
 void				ft_sort_min(t_stack **a, t_stack **b);
 void				ft_selection_sort(int *arr, size_t size);
