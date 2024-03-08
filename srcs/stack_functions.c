@@ -66,7 +66,7 @@ int	ft_is_sorted(t_stack *stack_x)
 	int	x;
 
 	if (!stack_x)
-		return (0);
+		return (1);
 	x = stack_x->value;
 	stack_x = stack_x->next;
 	while (stack_x)

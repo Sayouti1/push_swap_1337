@@ -35,33 +35,62 @@ int	*get_sorted_arr(t_stack *a)
 
 int	get_range(t_stack *a)
 {
-	int	size;
+	size_t	length_a;
 
-	size = ft_stack_len(a);
-	if (ft_stack_len(a) <= 25)
+	length_a = ft_stack_len(a);
+	if (length_a <= 25)
 		return (7);
-	else if (ft_stack_len(a) <= 50)
+	else if (length_a <= 50)
 		return (13);
-	else if (ft_stack_len(a) <= 100)
+	else if (length_a <= 100)
 		return (14);
-	else if (ft_stack_len(a) <= 200)
+	else if (length_a <= 200)
 		return (17);
-	else if (ft_stack_len(a) <= 550)
+	else if (length_a <= 550)
 		return (28);
 	else
 		return (50);
 }
-/*
-	9
-	0
-	5
-	12
-	3
-	6
-	7
-	8
-	1
-	4
-	2
-	10
-*/
+
+int	get_max_value(t_stack **a)
+{
+	int		max;
+	t_stack	*tmp;
+
+	tmp = *a;
+	max = tmp->value;
+	while (tmp)
+	{
+		if (tmp->value > max)
+			max = tmp->value;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+void	push_back_to_a(t_stack **a, t_stack **b)
+{
+	while (*b)
+	{
+		max_to_top(b);
+		ft_pa(a, b);
+	}
+}
+
+void	max_to_top(t_stack **b)
+{
+	size_t	b_length;
+	size_t	max_index;
+	size_t	max_rank;
+
+	b_length = ft_stack_len(*b);
+	update_max_rank(b, &max_rank, &max_index);
+	while ((*b)->index != max_index)
+	{
+		if (max_rank <= (b_length / 2))
+			ft_rb(b);
+		else
+			ft_rrb(b);
+		update_max_rank(b, &max_rank, &max_index);
+	}
+}

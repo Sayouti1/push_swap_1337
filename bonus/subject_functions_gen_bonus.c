@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   subject_functions_gen.c                            :+:      :+:    :+:   */
+/*   subject_functions_gen_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	ft_swap(t_stack **stack_x)
 {
@@ -68,5 +68,4 @@ void	ft_rrr(t_stack **a, t_stack **b)
 {
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
-	ft_putstr_fd("rrr\n", 1);
 }

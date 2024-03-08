@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   subject_functions.c                                :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 16:58:31 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:58:33 by aes-sayo         ###   ########.fr       */
+/*   Created: 2023/12/12 05:44:39 by aes-sayo          #+#    #+#             */
+/*   Updated: 2023/12/12 05:44:41 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-void	ft_sa(t_stack **a)
-{
-	ft_swap(a);
-}
+# include <stdlib.h>
+# include <unistd.h>
 
-void	ft_sb(t_stack **b)
-{
-	ft_swap(b);
-}
-
-void	ft_ss(t_stack **a, t_stack **b)
-{
-	ft_swap(a);
-	ft_swap(b);
-}
-
-void	ft_pa(t_stack **a, t_stack **b)
-{
-	ft_push(b, a);
-}
-
-void	ft_pb(t_stack **a, t_stack **b)
-{
-	ft_push(a, b);
-}
+char	*get_next_line(int fd);
+char	*ft_strjoin_gnl(char *old_line, char *buff);
+int		ft_strlen_gnl(char *str);
+char	*fix_line(char *line);
+char	*get_final_line(char *line);
+int		check_new_line(char *str);
+char	*get_text(int fd, char *line);
+#endif

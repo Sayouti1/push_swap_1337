@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	move_done(char *move, t_stack **a, t_stack **b)
 {
@@ -58,6 +58,8 @@ void	ft_checker(t_stack **a, t_stack **b)
 		free(move);
 		move = get_next_line(0);
 	}
+	if (move)
+		free(move);
 	if (ft_is_sorted(*a) && !ft_stack_len(*b))
 		ft_putstr_fd("OK\n", 1);
 	else

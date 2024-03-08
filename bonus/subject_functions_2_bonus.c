@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   subject_functions_2_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 05:44:39 by aes-sayo          #+#    #+#             */
-/*   Updated: 2023/12/12 05:44:41 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:58:20 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:58:24 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "push_swap_bonus.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+void	ft_ra(t_stack **a)
+{
+	ft_rotate(a);
+}
 
-char	*get_next_line(int fd);
-char	*ft_strjoin_gnl(char *old_line, char *buff);
-int		ft_strlen_gnl(char *str);
-char	*fix_line(char *line);
-char	*get_final_line(char *line);
-int		check_new_line(char *str);
-char	*get_text(int fd, char *line);
-#endif
+void	ft_rb(t_stack **b)
+{
+	ft_rotate(b);
+}
+
+void	ft_rr(t_stack **a, t_stack **b)
+{
+	ft_rotate(a);
+	ft_rotate(b);
+}
+
+void	ft_rra(t_stack **a)
+{
+	ft_reverse_rotate(a);
+}
+
+void	ft_rrb(t_stack **b)
+{
+	ft_reverse_rotate(b);
+}

@@ -12,12 +12,11 @@
 
 NAME=push_swap
 CC=cc
-CFLAGS=-Wall -Wextra -Werror 
-#-fsanitize=address
+CFLAGS=-Wall -Wextra -Werror
 
 SRCS= srcs/push_swap.c srcs/algorithms_utils.c srcs/functions_utils.c srcs/functions_utils2.c srcs/other_functions.c srcs/stack_functions.c srcs/subject_functions_2.c srcs/subject_functions.c srcs/subject_functions_gen.c srcs/sort_big.c
 OBJS=$(SRCS:.c=.o)
-SRCSB= bonus/subject_functions.c bonus/subject_functions_2.c bonus/subject_functions_gen.c bonus/stack_functions.c bonus/other_functions.c bonus/functions_utils.c bonus/checker.c bonus/get_next_line/get_next_line.c bonus/get_next_line/get_next_line_utils.c 
+SRCSB= bonus/subject_functions_bonus.c bonus/subject_functions_2_bonus.c bonus/subject_functions_gen_bonus.c bonus/stack_functions_bonus.c bonus/other_functions_bonus.c bonus/functions_utils_bonus.c bonus/checker_bonus.c bonus/get_next_line/get_next_line_bonus.c bonus/get_next_line/get_next_line_utils_bonus.c 
 OBJSB=$(SRCSB:.c=.o)
 
 all: $(NAME)

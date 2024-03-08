@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
@@ -48,7 +48,7 @@ char	*get_text(int fd, char *line)
 	char	*buff;
 	int		bytes_read;
 
-	buff = (char *)malloc(sizeof(char) * (6));
+	buff = (char *)malloc(sizeof(char) * (5));
 	if (!buff)
 		return (NULL);
 	buff[0] = 0;

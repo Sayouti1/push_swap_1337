@@ -30,9 +30,7 @@ void	ft_sort_algo(t_stack **a, t_stack **b)
 		if (ft_stack_len(*a) <= 10)
 			ft_sort_min(a, b);
 		else
-		{
 			ft_sort_big(a, b, &stack_len);
-		}
 	}
 	free_stack(a);
 }
@@ -82,7 +80,6 @@ void	ft_sort_three(t_stack **a)
 		else if (tmp->next->value > tmp->next->next->value)
 			ft_rra(a);
 	}
-	free_stack(a);
 }
 
 void	ft_sort_min(t_stack **a, t_stack **b)

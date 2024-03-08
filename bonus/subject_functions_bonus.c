@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   subject_functions_2.c                              :+:      :+:    :+:   */
+/*   subject_functions_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sayo <aes-sayo@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 16:58:20 by aes-sayo          #+#    #+#             */
-/*   Updated: 2024/03/05 16:58:24 by aes-sayo         ###   ########.fr       */
+/*   Created: 2024/03/05 16:58:31 by aes-sayo          #+#    #+#             */
+/*   Updated: 2024/03/05 16:58:33 by aes-sayo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-void	ft_ra(t_stack **a)
+void	ft_sa(t_stack **a)
 {
-	ft_rotate(a);
+	ft_swap(a);
 }
 
-void	ft_rb(t_stack **b)
+void	ft_sb(t_stack **b)
 {
-	ft_rotate(b);
+	ft_swap(b);
 }
 
-void	ft_rr(t_stack **a, t_stack **b)
+void	ft_ss(t_stack **a, t_stack **b)
 {
-	ft_rotate(a);
-	ft_rotate(b);
+	ft_swap(a);
+	ft_swap(b);
 }
 
-void	ft_rra(t_stack **a)
+void	ft_pa(t_stack **a, t_stack **b)
 {
-	ft_reverse_rotate(a);
+	ft_push(b, a);
 }
 
-void	ft_rrb(t_stack **b)
+void	ft_pb(t_stack **a, t_stack **b)
 {
-	ft_reverse_rotate(b);
+	ft_push(a, b);
 }
