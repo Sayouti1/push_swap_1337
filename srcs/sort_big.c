@@ -41,54 +41,60 @@ int	*init_vars_get_arr(t_stack *a, int *range, size_t *stack_len, size_t *i)
 	return (get_sorted_arr(a));
 }
 
-int	ft_is_rev_sorted(t_stack **a)
+int	ft_is_rev_sorted(t_stack **a, int *arr, size_t len)
 {
-	t_stack	*tmp;
-	t_stack	*tmp2;
+	size_t	occ;
 	size_t	i;
+	t_stack	*tmp;
+	size_t	j;
 
-	i = 0;
-	tmp2 = *a;
-	while (tmp2)
+	occ = 0;
+	i = len / 2;
+	while (i < len)
 	{
-		tmp = tmp2->next;
+		j = len / 2;
+		tmp = *a;
+		while (tmp && j)
+		{
+			if (arr[i] == tmp->value)
+				++occ;
+			tmp = tmp->next;
+			--j;
+		}
 		++i;
-		if (tmp && tmp2->value < tmp->value)
-			i = 0;
-		tmp2 = tmp2->next;
 	}
-	return (i >= ft_stack_len(*a) / 3);
+	if (len == 100)
+		return (occ >= (len / 2));
+	else
+		return (occ >= (len / 3));
 }
 
-int	ft_to_b(t_stack **a, t_stack **b, size_t length)
+int	ft_to_b(t_stack **a, t_stack **b)
 {
-	(void)length;
 	while (*a)
-	{
 		ft_pb(a, b);
-	}
 	return (1);
 }
 
-void	ft_sort_big(t_stack **a, t_stack **b, size_t *stack_len)
+void	ft_sort_big(t_stack **a, t_stack **b, size_t *a_len)
 {
 	int		range;
 	int		*arr;
 	size_t	i;
 
-	arr = init_vars_get_arr(*a, &range, stack_len, &i);
+	arr = init_vars_get_arr(*a, &range, a_len, &i);
 	while (*a)
 	{
-		if (get_max_value(a) == (*a)->value && ft_is_rev_sorted(a)
-			&& ft_stack_len(*a) > 10 && ft_to_b(a, b, ft_stack_len(*a)))
+		if (ft_stack_len(*a) == *a_len && ft_is_rev_sorted(a, arr, *a_len)
+			&& ft_to_b(a, b))
 			break ;
-		if (i <= *stack_len - 1 && (((*a)->value <= arr[i]) || ((range + i
-						<= *stack_len - 1 && (*a)->value <= arr[range + i]))))
+		if (i <= *a_len - 1 && (((*a)->value <= arr[i]) || ((range
+						+ i <= *a_len - 1 && (*a)->value <= arr[range + i]))))
 		{
 			ft_pb(a, b);
 			if ((*b)->value <= arr[i])
 				ft_rb(b);
-			else if (ft_stack_len(*b) > 1 && (*b)->value < (*b)->next->value)
+			else if ((*b)->next && (*b)->value < (*b)->next->value)
 				ft_sb(b);
 			i++;
 		}
