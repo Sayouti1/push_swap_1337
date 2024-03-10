@@ -90,5 +90,6 @@ int			*get_sorted_arr(t_stack *a);
 int			get_range(t_stack *a);
 void		push_back_to_a(t_stack **a, t_stack **b);
 void		max_to_top(t_stack **b);
+int			is_valid_argv(t_argv *split_av);
 
 #endif

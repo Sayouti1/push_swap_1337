@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME=push_swap
+BONUS=checker
 CC=cc
 CFLAGS=-Wall -Wextra -Werror
 
@@ -20,14 +21,15 @@ SRCSB= bonus/subject_functions_bonus.c bonus/subject_functions_2_bonus.c bonus/s
 OBJSB=$(SRCSB:.c=.o)
 
 all: $(NAME)
+bonus :	$(BONUS)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C libft
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) ./libft/libft.a
 
-bonus :	$(OBJSB)
+$(BONUS): $(OBJSB)
 	$(MAKE) -C libft
-	$(CC) $(CFLAGS) -o checker $(OBJSB) ./libft/libft.a
+	$(CC) $(CFLAGS) -o $(BONUS) $(OBJSB) ./libft/libft.a
 	
 clean :
 	$(MAKE) -C libft clean

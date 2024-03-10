@@ -63,3 +63,17 @@ void	ft_reverse_rotate(t_stack **stack_x)
 	last->next = *stack_x;
 	*stack_x = last;
 }
+
+int	is_valid_argv(t_argv *split_av)
+{
+	t_argv	*tmp;
+
+	tmp = split_av;
+	while (tmp)
+	{
+		if (!tmp->split)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
