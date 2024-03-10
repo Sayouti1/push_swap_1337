@@ -34,8 +34,10 @@ typedef struct s_argv
 
 t_stack		*ft_new_node(int value);
 void		ft_push_node(t_stack **stack_x, t_stack *node);
-t_stack		*ft_last(t_stack *stack_x);
-size_t		ft_stack_len(t_stack *stack_x);
+void		ft_swap(t_stack **stack_a);
+void		ft_push(t_stack **from, t_stack **to);
+void		ft_rotate(t_stack **stack_x);
+void		ft_reverse_rotate(t_stack **stack_x);
 
 /*_______________________subject_functions______________________________*/
 
@@ -51,45 +53,43 @@ void		ft_rra(t_stack **a);
 void		ft_rrb(t_stack **b);
 void		ft_rrr(t_stack **a, t_stack **b);
 
-/*________________________stack_methods_________________________________*/
-
-void		ft_swap(t_stack **stack_a);
-void		ft_push(t_stack **from, t_stack **to);
-void		ft_rotate(t_stack **stack_x);
-void		ft_reverse_rotate(t_stack **stack_x);
-
-/*________________________getters_______________________________________*/
+/*_______________________getters________________________________________*/
 
 size_t		ft_get_index(t_stack *a, int value);
 int			ft_get_min(t_stack *a);
 int			get_max_value(t_stack **a);
+int			*get_sorted_arr(t_stack *a);
+int			get_range(t_stack *a);
 size_t		ft_index_of(int *arr, int x, size_t size);
-void		ft_set_indexes(t_stack *a, int *arr, size_t size);
-int			ft_init_stack_stack(t_stack **a, t_argv **av);
+t_stack		*ft_last(t_stack *stack_x);
+size_t		ft_stack_len(t_stack *stack_x);
 
-/*_________________________check_functions______________________________*/
+/*_______________________check_functions________________________________*/
 int			ft_is_sorted(t_stack *stack_x);
 int			ft_is_duplicated(t_stack *a);
 int			ft_check_error_stack(t_argv *av);
+int			is_valid_argv(t_argv *split_av);
 
-/*_________________________________sort_big.c___________________________*/
+/*_______________________sort_algo.c____________________________________*/
 
 void		ft_sort_algo(t_stack **a, t_stack **b);
 void		ft_sort_big(t_stack **a, t_stack **b, size_t *stack_len);
 void		ft_sort_three(t_stack **a);
 void		ft_sort_min(t_stack **a, t_stack **b);
 void		ft_selection_sort(int *arr, size_t size);
-void		update_max_rank(t_stack **b, size_t *max_rank, size_t *max_index);
 
-/*_________________________________utils________________________________*/
+/*_______________________utils__________________________________________*/
 
 long		ft_atol(char *str);
-void		free_stack(t_stack **a);
-void		free_split_av(t_argv **av);
-int			*get_sorted_arr(t_stack *a);
-int			get_range(t_stack *a);
 void		push_back_to_a(t_stack **a, t_stack **b);
 void		max_to_top(t_stack **b);
-int			is_valid_argv(t_argv *split_av);
+void		update_max_rank(t_stack **b, size_t *max_rank, size_t *max_index);
+void		ft_set_indexes(t_stack *a, int *arr, size_t size);
+int			ft_init_stack_stack(t_stack **a, t_argv **av);
+
+/*_______________________freeing_functions______________________________*/
+
+void		free_stack(t_stack **a);
+void		free_split_av(t_argv **av);
 
 #endif
