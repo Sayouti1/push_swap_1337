@@ -94,15 +94,14 @@ char	*fix_line(char *line)
 	}
 	next_line = (char *)malloc(sizeof(char) * (ft_strlen_gnl(line) - i + 1));
 	if (!next_line)
-	{
-		free(line);
-		return (NULL);
-	}
+		return (free(line), NULL);
 	i++;
 	j = 0;
 	while (line[i])
 		next_line[j++] = line[i++];
 	next_line[j] = '\0';
 	free(line);
+	if (!next_line[0])
+		return (free(next_line), NULL);
 	return (next_line);
 }
