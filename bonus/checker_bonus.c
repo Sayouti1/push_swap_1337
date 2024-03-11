@@ -81,6 +81,20 @@ int	check_overflow(char *str)
 	return (0);
 }
 
+int	is_valid_argv(t_argv *split_av)
+{
+	t_argv	*tmp;
+
+	tmp = split_av;
+	while (tmp)
+	{
+		if (!tmp->split)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -96,7 +110,7 @@ int	main(int ac, char **av)
 	split_av = ft_new_argv(av[i++]);
 	while (i < ac)
 		ft_argv_add(&split_av, ft_new_argv(av[i++]));
-	if (!split_av || !split_av->split)
+	if (!split_av || !is_valid_argv(split_av))
 		return (free_split_av(&split_av), ft_putendl_fd("Error", 2), 0);
 	if (ft_check_error_stack(split_av))
 		return (free_split_av(&split_av), ft_putendl_fd("Error", 2), 0);
