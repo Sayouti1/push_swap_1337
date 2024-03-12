@@ -63,7 +63,7 @@ int	ft_strcmp_1(char *s1, char *s2)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (s1[i] == s2[i]);
 }
 
 t_argv	*ft_new_argv(char *av)
