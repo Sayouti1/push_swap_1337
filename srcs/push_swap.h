@@ -69,6 +69,7 @@ int			ft_is_sorted(t_stack *stack_x);
 int			ft_is_duplicated(t_stack *a);
 int			ft_check_error_stack(t_argv *av);
 int			is_valid_argv(t_argv *split_av);
+int			check_overflow(char *str);
 
 /*_______________________sort_algo.c____________________________________*/
 
