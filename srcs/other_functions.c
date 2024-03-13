@@ -85,8 +85,8 @@ int	ft_init_stack_stack(t_stack **a, t_argv **av)
 		i = 0;
 		while (tmp->split && tmp->split[i])
 		{
-			if (ft_atol(tmp->split[i]) > INT_MAX
-				|| ft_atol(tmp->split[i]) < INT_MIN)
+			if (check_overflow(tmp->split[i]) || ft_atol(tmp->split[i])
+				> INT_MAX || ft_atol(tmp->split[i]) < INT_MIN)
 			{
 				free_stack(a);
 				return (1);

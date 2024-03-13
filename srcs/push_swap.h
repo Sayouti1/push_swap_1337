@@ -71,6 +71,7 @@ int			ft_init_stack_stack(t_stack **a, t_argv **av);
 int			ft_is_sorted(t_stack *stack_x);
 int			ft_is_duplicated(t_stack *a);
 int			ft_check_error_stack(t_argv *av);
+int			check_overflow(char *str);
 
 /*_________________________________sort_big.c___________________________*/
 

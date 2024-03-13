@@ -64,7 +64,7 @@ int	ft_is_rev_sorted(t_stack **a, int *arr, size_t len)
 		++i;
 	}
 	if (len == 100)
-		return (occ >= (len / 2));
+		return (occ >= (len / 2) - 15);
 	else
 		return (occ >= (len / 3));
 }
